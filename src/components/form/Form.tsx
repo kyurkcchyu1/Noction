@@ -1,26 +1,15 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import { useForm, SubmitHandler } from "react-hook-form"
-import {Button, Container, Stack, TextField} from "@mui/material";
-import styled from "@emotion/styled";
-import { z } from "zod"
+import { Container, Stack } from "@mui/material";
+import { TextField } from "@/components/inputs/TextField/TextField";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Typography from "@mui/material/Typography";
-import {Inputs} from "@/components/form/types";
-
-
-const schema = z.object({
-    url: z.string(),
-    jwt_secret_ttl: z.number(),
-    refresh_secret_ttl: z.number().min(0, "Min value is 0").max(10, "Max value is 10"),
-    email_host: z.string(),
-    email_port: z.number(),
-    enable_google_oauth: z.boolean(),
-    oauth_google_client_id: z.string(),
-    oauth_google_client_secret: z.string(),
-    enable_ldap: z.boolean(),
-    ldap_url: z.string(),
-    ldap_bind_dn: z.string(),
-})
+import { Typography } from "@mui/material";
+import { Inputs } from "@/components/form/types";
+import { CustomForm } from "@/components/form/styled";
+import { schema } from "./types"
+import Button from '@/components/buttons/Button/index'
+import { grey, orange } from "@mui/material/colors";
+import { NumberInput } from "@/components/inputs/NumberInput/NumberInput";
 
 export default function Form() {
 
@@ -49,16 +38,10 @@ export default function Form() {
         formState: { errors },
     } = form
 
-    const CustomForm = styled.form`
-        padding: 20px 10px;
-        border: 1px solid black;
-        border-radius: 5px;
-    `
     const enableGoogleOauth = watch("enable_google_oauth")
     const enableLdap = watch("enable_ldap")
 
     const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
-
 
     return (
         <Container>
@@ -81,14 +64,13 @@ export default function Form() {
                             helperText={errors.jwt_secret_ttl?.message}
                             label="JWT Secret TTL:"
                         />
-                        <TextField
-                            type="number"
-                            {...register("refresh_secret_ttl", {
+                        <NumberInput
+                            register={register("refresh_secret_ttl", {
                                 required: "Refresh Secret TTL is required"
                             })}
+
                             error={!!errors.refresh_secret_ttl}
-                            helperText={errors.refresh_secret_ttl?.message}
-                            label="Refresh Secret TTL:"
+                            placeholder="Refresh Secret TTL:"
                         />
                     </Stack>
 
@@ -122,7 +104,9 @@ export default function Form() {
                         <input
                             type="checkbox"
                             {...register("enable_google_oauth")}
+
                         />
+                        Enable Google OAUTH
                     </Stack>
                     <Stack direction="row" spacing={2}>
                         <TextField
@@ -149,6 +133,7 @@ export default function Form() {
                             type="checkbox"
                             {...register("enable_ldap")}
                         />
+                        Enable LDAP
                     </Stack>
                     <Stack direction="row" spacing={2}>
                         <TextField
@@ -167,8 +152,22 @@ export default function Form() {
                     </Stack>
 
                     <Stack direction="row" spacing={2} justifyContent="flex-end">
-                        <Button type="submit" variant="contained">Submit</Button>
-                        <Button type="reset" variant="outlined" onClick={() => reset()}>Reset</Button>
+                        <Button label={"RESET"}
+                                type={"reset"}
+                                variant="outlined"
+                                disabled={false}
+                                backgroundColor={grey[500]}
+                                onClick={() => reset()}
+                        ></Button>
+                        <Button
+                            label={"SAVE CHANGES"}
+                            type={"submit"}
+                            variant="contained"
+                            disabled={false}
+                            backgroundColor={orange[500]}
+                        ></Button>
+                        {/*<S.Button type="submit" variant="contained">Submit</S.Button>*/}
+                        {/*<S.Button type="reset" variant="outlined" onClick={() => reset()}>Reset</S.Button>*/}
                     </Stack>
                 </Stack>
             </CustomForm>

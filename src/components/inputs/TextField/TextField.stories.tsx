@@ -1,18 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { StyledTextField } from './StyledTextField';
+import { TextField } from './TextField';
 
 
-const meta: Meta<typeof StyledTextField> = {
+const meta: Meta<typeof TextField> = {
     title: "Inputs/TextField",
-    component: StyledTextField
+    component: TextField
 }
 
 export default meta;
 
-type Story = StoryObj<typeof StyledTextField>;
+type Story = StoryObj<typeof TextField>;
 
 export const Default: Story = {
     args: {
         label: "Type some text:",
+        error: false
     }
 }
