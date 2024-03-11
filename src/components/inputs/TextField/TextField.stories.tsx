@@ -13,6 +13,6 @@ type Story = StoryObj<typeof StyledTextField>;
 
 export const Default: Story = {
     args: {
-        label: "Default",
+        label: "Type some text:",
     }
 }
