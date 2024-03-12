@@ -14,6 +14,7 @@ type Story = StoryObj<typeof TextField>;
 export const Default: Story = {
     args: {
         label: "Type some text:",
-        error: false
+        error: false,
+        disabled: false
     }
 }

@@ -19,8 +19,7 @@ export const NumberInput = forwardRef<HTMLInputElement, Props>((
         required,
         value,
         ...props
-    },
-        ref) => {
+    }, ref) => {
     return (
         <BaseNumberInput
             slots={{
@@ -37,6 +36,7 @@ export const NumberInput = forwardRef<HTMLInputElement, Props>((
                     children: '▾',
                 },
             }}
+
             placeholder={placeholder}
             {...props}
             ref={ref}

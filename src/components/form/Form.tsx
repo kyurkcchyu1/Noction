@@ -1,3 +1,4 @@
+'use client'
 import React, {useRef} from 'react';
 import { useForm, SubmitHandler } from "react-hook-form"
 import { Container, Stack } from "@mui/material";
@@ -7,9 +8,9 @@ import { Typography } from "@mui/material";
 import { Inputs } from "@/components/form/types";
 import { CustomForm } from "@/components/form/styled";
 import { schema } from "./types"
-import Button from '@/components/buttons/Button/index'
+import { Button } from '@/components/buttons/Button';
 import { grey, orange } from "@mui/material/colors";
-import { NumberInput } from "@/components/inputs/NumberInput/NumberInput";
+// import { NumberInput } from "@/components/inputs/NumberInput/NumberInput";
 
 export default function Form() {
 
@@ -40,6 +41,8 @@ export default function Form() {
 
     const enableGoogleOauth = watch("enable_google_oauth")
     const enableLdap = watch("enable_ldap")
+    // const inputRef = useRef<HTMLInputElement>(null);
+
 
     const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
@@ -64,14 +67,11 @@ export default function Form() {
                             helperText={errors.jwt_secret_ttl?.message}
                             label="JWT Secret TTL:"
                         />
-                        <NumberInput
-                            register={register("refresh_secret_ttl", {
-                                required: "Refresh Secret TTL is required"
-                            })}
-
-                            error={!!errors.refresh_secret_ttl}
-                            placeholder="Refresh Secret TTL:"
-                        />
+                        {/*<NumberInput*/}
+                        {/*    {...register("refresh_secret_ttl")}*/}
+                        {/*    // error={!!errors.refresh_secret_ttl}*/}
+                        {/*    placeholder="Refresh Secret TTL:"*/}
+                        {/*/>*/}
                     </Stack>
 
                     <Typography>
@@ -104,7 +104,6 @@ export default function Form() {
                         <input
                             type="checkbox"
                             {...register("enable_google_oauth")}
-
                         />
                         Enable Google OAUTH
                     </Stack>

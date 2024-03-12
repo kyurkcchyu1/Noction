@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import {grey} from "@mui/material/colors";
-import {numberInputClasses} from "@mui/base/Unstable_NumberInput";
+import { grey } from "@mui/material/colors";
+import { numberInputClasses } from "@mui/base/Unstable_NumberInput";
 
 
 export const StyledInputRoot = styled('div')(() => `
@@ -18,6 +18,7 @@ export const StyledInputRoot = styled('div')(() => `
       column-gap: 8px;
       padding: 4px 16px 4px 4px;
       width: 50%;
+      height: 46px;
     
       &.${numberInputClasses.focused} {
         border-color: ${grey[900]};

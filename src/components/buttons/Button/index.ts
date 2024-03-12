@@ -1,2 +1,1 @@
-import { Button } from "@/components/buttons/Button/Button";
-export default Button;
+export { Button } from "./Button";
