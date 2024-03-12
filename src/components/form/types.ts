@@ -3,7 +3,7 @@ import {z} from "zod";
 
 export type Inputs = {
     url: string
-    jwt_secret_ttl: number
+    jwt_secret_ttl: string
     refresh_secret_ttl: number
     email_host: string
     email_port: number
@@ -18,7 +18,7 @@ export type Inputs = {
 
 export const schema = z.object({
     url: z.string(),
-    jwt_secret_ttl: z.number(),
+    jwt_secret_ttl: z.string(),
     refresh_secret_ttl: z.number().min(0, "Min value is 0").max(10, "Max value is 10"),
     email_host: z.string(),
     email_port: z.number(),

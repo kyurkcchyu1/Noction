@@ -8,16 +8,16 @@ import {forwardRef} from "react";
 
 export const NumberInput = forwardRef<HTMLInputElement, Props>((
     {
+        value,
         placeholder,
         disabled,
-        register,
         defaultValue,
         error,
         min,
         max,
-        onChange,
         required,
-        value,
+        onChange,
+        onInputChange,
         ...props
     }, ref) => {
     return (
@@ -36,10 +36,11 @@ export const NumberInput = forwardRef<HTMLInputElement, Props>((
                     children: '▾',
                 },
             }}
-
+            value={value}
+            onChange={onChange}
             placeholder={placeholder}
-            {...props}
             ref={ref}
+            {...props}
         />
     );
 });

@@ -1,7 +1,7 @@
 'use client'
 import React, {useRef} from 'react';
 import { useForm, SubmitHandler } from "react-hook-form"
-import { Container, Stack } from "@mui/material";
+import {Container, Stack} from "@mui/material";
 import { TextField } from "@/components/inputs/TextField/TextField";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Typography } from "@mui/material";
@@ -10,14 +10,13 @@ import { CustomForm } from "@/components/form/styled";
 import { schema } from "./types"
 import { Button } from '@/components/buttons/Button';
 import { grey, orange } from "@mui/material/colors";
-// import { NumberInput } from "@/components/inputs/NumberInput/NumberInput";
 
 export default function Form() {
 
     const form = useForm<Inputs>({
         defaultValues: {
             url: "https://localhost:3000",
-            jwt_secret_ttl: 0,
+            jwt_secret_ttl: "",
             refresh_secret_ttl: 0,
             email_host: "",
             email_port: 0,
@@ -41,8 +40,7 @@ export default function Form() {
 
     const enableGoogleOauth = watch("enable_google_oauth")
     const enableLdap = watch("enable_ldap")
-    // const inputRef = useRef<HTMLInputElement>(null);
-
+    const inputRefs = useRef<HTMLInputElement>(null);
 
     const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
@@ -67,11 +65,15 @@ export default function Form() {
                             helperText={errors.jwt_secret_ttl?.message}
                             label="JWT Secret TTL:"
                         />
-                        {/*<NumberInput*/}
-                        {/*    {...register("refresh_secret_ttl")}*/}
-                        {/*    // error={!!errors.refresh_secret_ttl}*/}
-                        {/*    placeholder="Refresh Secret TTL:"*/}
-                        {/*/>*/}
+                        <TextField
+                            type="number"
+                            {...register("refresh_secret_ttl",{
+                                valueAsNumber: true
+                            })}
+                            error={!!errors.refresh_secret_ttl}
+                            helperText={errors.refresh_secret_ttl?.message}
+                            label="Refresh Secret TTL:"
+                        />
                     </Stack>
 
                     <Typography>
@@ -88,7 +90,8 @@ export default function Form() {
                         <TextField
                             type="number"
                             {...register("email_port", {
-                                required: "Refresh Secret TTL is required"
+                                required: "Refresh Secret TTL is required",
+                                valueAsNumber: true
                             })}
                             error={!!errors.email_port}
                             helperText={errors.email_port?.message}
@@ -113,6 +116,7 @@ export default function Form() {
                                 disabled: !enableGoogleOauth
                             })}
                             label="OAUTH Google Client ID:"
+
                         />
 
                         <TextField
@@ -129,10 +133,9 @@ export default function Form() {
 
                     <Stack direction="row">
                         <input
-                            type="checkbox"
+                            type='checkbox'
                             {...register("enable_ldap")}
-                        />
-                        Enable LDAP
+                        />Enable LDAP
                     </Stack>
                     <Stack direction="row" spacing={2}>
                         <TextField
@@ -153,7 +156,6 @@ export default function Form() {
                     <Stack direction="row" spacing={2} justifyContent="flex-end">
                         <Button label={"RESET"}
                                 type={"reset"}
-                                variant="outlined"
                                 disabled={false}
                                 backgroundColor={grey[500]}
                                 onClick={() => reset()}
@@ -161,7 +163,6 @@ export default function Form() {
                         <Button
                             label={"SAVE CHANGES"}
                             type={"submit"}
-                            variant="contained"
                             disabled={false}
                             backgroundColor={orange[500]}
                         ></Button>

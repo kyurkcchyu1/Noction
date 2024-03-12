@@ -3,7 +3,7 @@ import { grey } from "@mui/material/colors";
 import { numberInputClasses } from "@mui/base/Unstable_NumberInput";
 
 
-export const StyledInputRoot = styled('div')(() => `
+export const StyledInputRoot = styled.div`
       font-family: 'IBM Plex Sans', sans-serif;
       font-weight: 400;
       border-radius: 30px;
@@ -32,10 +32,9 @@ export const StyledInputRoot = styled('div')(() => `
       &:focus-visible {
         outline: 0;
       }
-`,
-);
+`;
 
-export const StyledInputElement = styled('input')(() => `
+export const StyledInputElement = styled.input`
       font-size: 0.875rem;
       font-family: inherit;
       font-weight: 400;
@@ -48,10 +47,9 @@ export const StyledInputElement = styled('input')(() => `
       border-radius: 30px;
       padding: 8px 12px;
       outline: 0;
-`,
-);
+`;
 
-export const StyledButton = styled('button')(() => `
+export const StyledButton = styled.button`
       display: flex;
       flex-flow: row nowrap;
       justify-content: center;
@@ -110,5 +108,4 @@ export const StyledButton = styled('button')(() => `
       & .arrow {
         transform: translateY(-1px);
       }
-`,
-);
+`;

@@ -5,7 +5,7 @@ export type Props = TextFieldProps & {
     label?: string,
     error?: boolean,
     helperText?: string,
-    disabled?: boolean
+    disabled?: boolean,
 }
 
 
