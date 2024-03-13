@@ -9,24 +9,26 @@ import { Inputs } from "@/components/form/types";
 import { CustomForm } from "@/components/form/styled";
 import { schema } from "./types"
 import { Button } from '@/components/buttons/Button';
-import { grey, orange } from "@mui/material/colors";
+import {NumberInput} from "@/components/inputs/NumberInput";
 
 export default function Form() {
 
+    const defaultValues = {
+        URL: "https://localhost:3000",
+        JWT_SECRET_TTL: "",
+        REFRESH_SECRET_TTL: 2,
+        EMAIL_HOST: "",
+        EMAIL_PORT: 0,
+        ENABLE_GOOGLE_OAUTH: false,
+        OAUTH_GOOGLE_CLIENT_ID: "",
+        OAUTH_GOOGLE_CLIENT_SECRET: "",
+        ENABLE_LDAP: false,
+        LDAP_URL: "",
+        LDAP_BIND_DN: ""
+    }
+
     const form = useForm<Inputs>({
-        defaultValues: {
-            url: "https://localhost:3000",
-            jwt_secret_ttl: "",
-            refresh_secret_ttl: 0,
-            email_host: "",
-            email_port: 0,
-            enable_google_oauth: false,
-            oauth_google_client_id: "",
-            oauth_google_client_secret: "",
-            enable_ldap: false,
-            ldap_url: "",
-            ldap_bind_dn: ""
-        },
+        defaultValues,
         resolver: zodResolver(schema)
     })
 
@@ -38,11 +40,13 @@ export default function Form() {
         formState: { errors },
     } = form
 
-    const enableGoogleOauth = watch("enable_google_oauth")
-    const enableLdap = watch("enable_ldap")
+    const enableGoogleOauth = watch("ENABLE_GOOGLE_OAUTH")
+    const enableLdap = watch("ENABLE_LDAP")
     const inputRefs = useRef<HTMLInputElement>(null);
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+    const onSubmit: SubmitHandler<Inputs> = (data) => {
+        console.log(data)
+    }
 
     return (
         <Container>
@@ -51,8 +55,9 @@ export default function Form() {
                 <Stack spacing={4}>
                     <Stack direction="row">
                         <TextField
-                            {...register("url")}
+                            {...register("URL")}
                             label="Application URL:"
+                            placeholder="Application URL.."
                         />
                     </Stack>
                     <Typography>
@@ -60,45 +65,46 @@ export default function Form() {
                     </Typography>
                     <Stack direction="row" spacing={2}>
                         <TextField
-                            {...register("jwt_secret_ttl")}
-                            error={!!errors.jwt_secret_ttl}
-                            helperText={errors.jwt_secret_ttl?.message}
+                            {...register("JWT_SECRET_TTL")}
+                            error={!!errors.JWT_SECRET_TTL}
+                            helperText={errors.JWT_SECRET_TTL?.message}
                             label="JWT Secret TTL:"
+                            placeholder="JWT Secret TTL.."
                         />
                         <TextField
-                            type="number"
-                            {...register("refresh_secret_ttl",{
+                            {...register("REFRESH_SECRET_TTL",{
                                 valueAsNumber: true
                             })}
-                            error={!!errors.refresh_secret_ttl}
-                            helperText={errors.refresh_secret_ttl?.message}
+                            error={!!errors.REFRESH_SECRET_TTL}
+                            helperText={errors.REFRESH_SECRET_TTL?.message}
                             label="Refresh Secret TTL:"
+                            placeholder="Refresh Secret TTL.."
+                            type="number"
                         />
                     </Stack>
-
                     <Typography>
                         Email Settings:
                     </Typography>
-
                     <Stack direction="row" spacing={2}>
                         <TextField
-                            {...register("email_host")}
-                            error={!!errors.email_host}
-                            helperText={errors.email_host?.message}
+                            {...register("EMAIL_HOST")}
+                            error={!!errors.EMAIL_HOST}
+                            helperText={errors.EMAIL_HOST?.message}
                             label="Email Host:"
+                            placeholder="Email Host.."
                         />
                         <TextField
                             type="number"
-                            {...register("email_port", {
-                                required: "Refresh Secret TTL is required",
+                            {...register("EMAIL_PORT", {
                                 valueAsNumber: true
                             })}
-                            error={!!errors.email_port}
-                            helperText={errors.email_port?.message}
+                            error={!!errors.EMAIL_PORT}
+                            helperText={errors.EMAIL_PORT?.message}
                             label="Email Port:"
+                            placeholder="Email Port.."
+                            errorMessage={errors.EMAIL_PORT?.message}
                         />
                     </Stack>
-
                     <Typography>
                         Google Settings:
                     </Typography>
@@ -106,68 +112,64 @@ export default function Form() {
                     <Stack direction="row">
                         <input
                             type="checkbox"
-                            {...register("enable_google_oauth")}
+                            {...register("ENABLE_GOOGLE_OAUTH")}
                         />
                         Enable Google OAUTH
                     </Stack>
                     <Stack direction="row" spacing={2}>
                         <TextField
-                            {...register("oauth_google_client_id", {
+                            {...register("OAUTH_GOOGLE_CLIENT_ID", {
                                 disabled: !enableGoogleOauth
                             })}
                             label="OAUTH Google Client ID:"
-
+                            placeholder="AUTH Google Client ID.."
                         />
 
                         <TextField
-                            {...register("oauth_google_client_secret", {
+                            {...register("OAUTH_GOOGLE_CLIENT_SECRET", {
                                 disabled: !enableGoogleOauth
                             })}
                             label="OAUTH Google Client Secret:"
+                            placeholder="OAUTH Google Client Secret.."
                         />
                     </Stack>
-
                     <Typography>
                         LDAP Settings:
                     </Typography>
-
                     <Stack direction="row">
                         <input
                             type='checkbox'
-                            {...register("enable_ldap")}
+                            {...register("ENABLE_LDAP")}
                         />Enable LDAP
                     </Stack>
                     <Stack direction="row" spacing={2}>
                         <TextField
-                            {...register("ldap_url", {
+                            {...register("LDAP_URL", {
                                 disabled: !enableLdap
                             })}
                             label="LDAP URL:"
+                            placeholder="LDAP URL.."
                         />
-
                         <TextField
-                            {...register("ldap_bind_dn", {
+                            {...register("LDAP_BIND_DN", {
                                 disabled: !enableLdap
                             })}
                             label="LDAP BIND DN:"
+                            placeholder="LDAP BIND DN.."
                         />
                     </Stack>
-
                     <Stack direction="row" spacing={2} justifyContent="flex-end">
-                        <Button label={"RESET"}
-                                type={"reset"}
-                                disabled={false}
-                                backgroundColor={grey[500]}
-                                onClick={() => reset()}
-                        ></Button>
                         <Button
-                            label={"SAVE CHANGES"}
-                            type={"submit"}
+                                type="reset"
+                                variant="outlined"
+                                disabled={false}
+                                onClick={() => reset()}
+                        >RESET</Button>
+                        <Button
+                            type="submit"
+                            variant="contained"
                             disabled={false}
-                            backgroundColor={orange[500]}
-                        ></Button>
-                        {/*<S.Button type="submit" variant="contained">Submit</S.Button>*/}
-                        {/*<S.Button type="reset" variant="outlined" onClick={() => reset()}>Reset</S.Button>*/}
+                        >SAVE CHANGES</Button>
                     </Stack>
                 </Stack>
             </CustomForm>

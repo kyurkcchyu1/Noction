@@ -34,3 +34,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## Start Storybook
+Storybook comes with a built-in development server featuring everything you need for project development. Depending on your system configuration, running the storybook command will start the local development server, output the address for you, and automatically open the address in a new browser.
+
+
+Run storybook using:
+```bash
+npm run sb
+```
+
+Open your web browser and go to http://localhost:6006 to access the application.

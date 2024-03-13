@@ -6,6 +6,9 @@ import {grey} from "@mui/material/colors";
 export const InputLabel = styled(MuiInputLabel)`
     &.Mui-focused {
         color: orange;
+    },
+    &.Mui-error {
+        color: red;
     }
 `
 
@@ -30,8 +33,8 @@ export const InputBase = styled(MuiInputBase)(() => ({
     },
 
     '& .Mui-disabled': {
-        backgroundColor: '#c7c7c7',
-    }
+        backgroundColor: '#aaa7a7',
+    },
 }));
 
 

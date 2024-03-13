@@ -14,7 +14,10 @@ type Story = StoryObj<typeof TextField>;
 export const Default: Story = {
     args: {
         label: "Type some text:",
+        placeholder: "Start typing some text...",
+        errorMessage: "Error..",
         error: false,
-        disabled: false
+        disabled: false,
+        id: "default-text-field"
     }
 }

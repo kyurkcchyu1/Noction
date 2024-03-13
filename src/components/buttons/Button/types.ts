@@ -1,10 +1,8 @@
-import { ButtonProps } from "@mui/base";
+import { ButtonProps } from "@mui/material";
 
 
 export type Props = ButtonProps & {
-    type?: string;
-    backgroundColor?: string;
-    disabled: boolean;
-    label: string;
-    onClick?: () => void;
+    isLoading?: boolean;
+    hasIcon?: boolean;
+    iconSize?: number;
 }

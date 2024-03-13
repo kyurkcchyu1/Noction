@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
-import {orange, grey} from "@mui/material/colors";
-import {action} from "@storybook/addon-actions";
+import { action } from "@storybook/addon-actions";
+import { Stack } from "@mui/material";
 
 
 const meta: Meta<typeof Button> = {
@@ -16,19 +16,65 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
     args: {
-        label: "Default",
-        disabled: false,
-        backgroundColor: orange[500],
+        iconSize: 20,
         onClick: action("onClick")
+    },
+    render: args => {
+        return (
+            <Stack spacing={2} direction="row">
+                <Button {...args} variant="text">Text</Button>
+                <Button {...args} variant="outlined">Contained</Button>
+                <Button {...args} variant="contained">Outlined</Button>
+            </Stack>
+        )
     }
 }
 
-
 export const Disabled: Story = {
     args: {
-        label: "Disabled",
+        iconSize: 20,
         disabled: true,
-        backgroundColor: grey[900]
+    },
+    render: args => {
+        return (
+            <Stack spacing={2} direction="row">
+                <Button {...args} variant="text">Text</Button>
+                <Button {...args} variant="outlined">Contained</Button>
+                <Button {...args} variant="contained">Outlined</Button>
+            </Stack>
+        )
+    }
+}
+
+export const Loading: Story = {
+    args: {
+        iconSize: 20,
+        isLoading: true,
+    },
+    render: args => {
+        return (
+            <Stack spacing={2} direction="row">
+                <Button {...args} variant="text">Text</Button>
+                <Button {...args} variant="outlined">Contained</Button>
+                <Button {...args} variant="contained">Outlined</Button>
+            </Stack>
+        )
+    }
+}
+
+export const WithIcon: Story = {
+    args: {
+        hasIcon: true,
+        iconSize: 20
+    },
+    render: args => {
+        return (
+            <Stack spacing={2} direction="row">
+                <Button {...args} variant="text">Text</Button>
+                <Button {...args} variant="outlined">Contained</Button>
+                <Button {...args} variant="contained">Outlined</Button>
+            </Stack>
+        )
     }
 }
 

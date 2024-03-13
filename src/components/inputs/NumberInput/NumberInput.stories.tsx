@@ -14,8 +14,10 @@ type Story = StoryObj<typeof NumberInput>;
 
 export const Default: Story = {
     args: {
+        label: "Number input:",
         placeholder: "Type a number…",
-        error: false,
+        error: true,
+        errorMessage: "Error...",
         onChange: action('onChange')
     }
 }

@@ -4,21 +4,21 @@ import { Props } from "@/components/inputs/Checkbox/types";
 import * as S from './styled';
 
 
-export const Checkbox = (
-    {
+export const Checkbox = ({
         label,
         disabled,
         id,
         onChange,
-        checked
+        size
     }: Props) => (
         <FormControlLabel
-            control={<S.Checkbox
-                onChange={onChange}
-                id={id}
-            />}
             label={label}
             disabled={disabled}
+            control={<S.Checkbox
+                id={id}
+                onChange={onChange}
+                size={size}
+            />}
         />
     );
 

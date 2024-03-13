@@ -1,0 +1,36 @@
+import {ArgTypes, Canvas, Meta} from '@storybook/blocks';
+
+import * as TextFieldStories from './TextField.stories';
+import { TextField } from "./TextField";
+
+<Meta of={TextFieldStories} />
+# Button
+
+Buttons let users take actions and make choices with a single tap.
+
+- [Usage](#usage)
+- [Overview](#overview)
+- [Props](#props)
+
+
+## Usage
+```js
+import { TextField } from '@components'
+```
+
+## Overview
+
+<Canvas of={TextFieldStories.Default}/>
+```jsx
+<TextField
+    id="default-text-field"
+    label="Type some text:"
+    placeholder="Start typing some text..."
+    errorMessage="Error.."
+/>
+```
+
+## Props
+
+<ArgTypes story="Playground"/>
+
