@@ -1,2 +1,2 @@
-export { Checkbox } from "./Checkbox/index"
-export { TextField } from "./TextField/index"
+export { Checkbox } from "./Checkbox/index";
+export { TextField } from "./TextField/index";

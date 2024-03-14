@@ -1,8 +1,9 @@
-import {ArgTypes, Canvas, Meta} from '@storybook/blocks';
-import * as ButtonStories from './Button.stories';
-import {Button} from "./Button";
+import { ArgTypes, Canvas, Meta } from "@storybook/blocks";
+import * as ButtonStories from "./Button.stories";
+import { Button } from "./Button";
 
 <Meta of={ButtonStories} />
+
 # Button
 
 Buttons let users take actions and make choices with a single tap.
@@ -13,12 +14,14 @@ Buttons let users take actions and make choices with a single tap.
 - [Variants](#variants)
 
 ## Usage
+
 ```js
-import { Button } from '@components'
+import { Button } from "@components";
 ```
 
 ## Overview
-<Canvas of={ButtonStories.Default}/>
+
+<Canvas of={ButtonStories.Default} />
 ```jsx
 <Button variant="text">Text</Button>
 <Button variant="outlined">Contained</Button>
@@ -26,31 +29,52 @@ import { Button } from '@components'
 ```
 
 ## Props
+
 <ArgTypes story="Playground" />
 
 ## Variants
 
 ### Disabled
+
 <Canvas of={ButtonStories.Disabled} sourceState="none" />
 ```jsx
-<Button variant="text" disabled>Text</Button>
-<Button variant="outlined" disabled>Contained</Button>
-<Button variant="contained" disabled>Outlined</Button>
+<Button variant="text" disabled>
+  Text
+</Button>
+<Button variant="outlined" disabled>
+  Contained
+</Button>
+<Button variant="contained" disabled>
+  Outlined
+</Button>
 ```
 
 ### Loading
+
 <Canvas of={ButtonStories.Loading} sourceState="none" />
 ```jsx
-<Button variant="text" isLoading>Text</Button>
-<Button variant="outlined" isLoading>Contained</Button>
-<Button variant="contained" isLoading>Outlined</Button>
+<Button variant="text" isLoading>
+  Text
+</Button>
+<Button variant="outlined" isLoading>
+  Contained
+</Button>
+<Button variant="contained" isLoading>
+  Outlined
+</Button>
 ```
 
 ### With Icon
+
 <Canvas of={ButtonStories.WithIcon} sourceState="none" />
 ```jsx
-<Button variant="text" hasIcon>Text</Button>
-<Button variant="outlined" hasIcon>Contained</Button>
-<Button variant="contained" hasIcon>Outlined</Button>
+<Button variant="text" hasIcon>
+  Text
+</Button>
+<Button variant="outlined" hasIcon>
+  Contained
+</Button>
+<Button variant="contained" hasIcon>
+  Outlined
+</Button>
 ```
-

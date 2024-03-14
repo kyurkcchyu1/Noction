@@ -1,10 +1,7 @@
-import {Button as MuiButton, buttonClasses} from "@mui/material";
+import { Button as MuiButton } from "@mui/material";
 import styled from "@emotion/styled";
-import isPropValid from "@emotion/is-prop-valid";
 
-
-export const Button = styled(MuiButton)`
-`
+export const Button = styled(MuiButton)``;
 
 // export const Button = styled(MuiButton, {
 //     shouldForwardProp: prop =>  isPropValid(prop) && prop !== 'backgroundColor'
@@ -39,4 +36,3 @@ export const Button = styled(MuiButton)`
 //   }
 //   `,
 // );
-

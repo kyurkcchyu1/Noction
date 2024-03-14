@@ -1,8 +1,9 @@
-import { ArgTypes, Canvas, Meta } from '@storybook/blocks';
+import { ArgTypes, Canvas, Meta } from "@storybook/blocks";
 import * as CheckboxStories from "./Checkbox.stories";
 import { Checkbox } from "./Checkbox";
 
 <Meta of={CheckboxStories} />
+
 # Checkbox
 
 Checkboxes allow the user to select one or more items from a set.
@@ -12,36 +13,35 @@ Checkboxes allow the user to select one or more items from a set.
 - [Props](#props)
 - [Variants](#variants)
 
-
 ## Usage
+
 ```js
-import { Checkbox } from '@components'
+import { Checkbox } from "@components";
 ```
 
 ## Overview
-<Canvas of={CheckboxStories.Default}/>
+
+<Canvas of={CheckboxStories.Default} />
 ```jsx
 <Checkbox label="Checkbox label" />
 ```
 
 ## Props
+
 <ArgTypes story="Playground" />
 
 ## Variants
 
 ### Default
-<Canvas of={CheckboxStories.Default}/>
+
+<Canvas of={CheckboxStories.Default} />
 ```jsx
 <Checkbox label="Checkbox label" />
 ```
 
-
-
 ### Disabled
-<Canvas of={CheckboxStories.Disabled}/>
+
+<Canvas of={CheckboxStories.Disabled} />
 ```jsx
-<Checkbox label="Checkbox label" disabled/>
+<Checkbox label="Checkbox label" disabled />
 ```
-
-
-

@@ -1,3 +1,4 @@
-export { Button } from "./buttons/index"
-export { Checkbox } from "./inputs/index"
-export { TextField } from "./inputs/index"
+export * from "./buttons";
+export * from "./inputs";
+export * from "./inputs";
+export * from "./form";

@@ -1,8 +1,7 @@
 import { NumberInputProps } from "@mui/base";
 
-
 export type Props = NumberInputProps & {
-    label: string,
-    name?: string,
-    errorMessage?: string
-}
+  label: string;
+  name?: string;
+  errorMessage?: string;
+};
