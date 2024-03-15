@@ -1,44 +1,30 @@
 "use client";
 import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
 import { Container, Stack } from "@mui/material";
 import { Typography } from "@mui/material";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { TextField } from "@components";
-import { Inputs } from "@components";
-import { CustomForm } from "@components";
-import { Button } from "@components";
-import { schema } from "./types";
-import { data } from "@hooks/staticData";
-import { transformData } from "@hooks/transformData";
+import { Checkbox, TextField, CustomForm, Button } from "@components";
+import { useConfigForm } from "@hooks/useConfigForm";
+import { DevTool } from "@hookform/devtools";
 
 export default function Form() {
-  const defaultValues = transformData(data);
-  const form = useForm<Inputs>({
-    defaultValues,
-    resolver: zodResolver(schema),
-  });
-
   const {
     register,
     handleSubmit,
     watch,
     reset,
-    formState: { errors },
-  } = form;
+    control,
+    formState: { errors, isDirty },
+  } = useConfigForm();
 
   const enableGoogleOauth = watch("OAUTH_GOOGLE_ENABLED");
   const enableLdap = watch("LDAP_ENABLED");
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-  };
+  console.log(isDirty);
 
   return (
     <>
       <Container>
-        <h1>Some form</h1>
-        <CustomForm onSubmit={handleSubmit(onSubmit)}>
+        <CustomForm onSubmit={handleSubmit}>
           <Stack spacing={4}>
             <Stack direction="row">
               <TextField
@@ -48,12 +34,9 @@ export default function Form() {
               />
             </Stack>
             <Typography>Authentication Security Settings:</Typography>
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" justifyContent="space-around">
               <TextField
-                {...register("JWT_SECRET_TTL", {
-                  valueAsNumber: true,
-                })}
-                type="number"
+                {...register("JWT_SECRET_TTL")}
                 placeholder="JWT Secret TTL.."
                 error={!!errors.JWT_SECRET_TTL}
                 errorMessage={errors.JWT_SECRET_TTL?.message}
@@ -71,7 +54,7 @@ export default function Form() {
               />
             </Stack>
             <Typography>Email Settings:</Typography>
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" justifyContent="space-around">
               <TextField
                 {...register("EMAIL_HOST")}
                 error={!!errors.EMAIL_HOST}
@@ -91,66 +74,61 @@ export default function Form() {
               />
             </Stack>
             <Typography>Google Settings:</Typography>
-
             <Stack direction="row">
-              <input type="checkbox" {...register("OAUTH_GOOGLE_ENABLED")} />
-              Enable Google OAUTH
+              <Checkbox
+                {...register("OAUTH_GOOGLE_ENABLED")}
+                label="Enable Google OAUTH"
+                checked={enableGoogleOauth}
+              />
             </Stack>
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" justifyContent="space-around">
               <TextField
-                {...register("OAUTH_GOOGLE_CLIENT_ID", {
-                  disabled: !enableGoogleOauth,
-                })}
+                {...register("OAUTH_GOOGLE_CLIENT_ID")}
+                disabled={!enableGoogleOauth}
                 label="OAUTH Google Client ID:"
                 placeholder="AUTH Google Client ID.."
               />
-
               <TextField
-                {...register("OAUTH_GOOGLE_CLIENT_SECRET", {
-                  disabled: !enableGoogleOauth,
-                })}
+                {...register("OAUTH_GOOGLE_CLIENT_SECRET")}
+                disabled={!enableGoogleOauth}
                 label="OAUTH Google Client Secret:"
                 placeholder="OAUTH Google Client Secret.."
               />
             </Stack>
             <Typography>LDAP Settings:</Typography>
             <Stack direction="row">
-              <input type="checkbox" {...register("LDAP_ENABLED")} />
-              Enable LDAP
+              <Checkbox
+                {...register("LDAP_ENABLED")}
+                label="Enable LDAP"
+                checked={enableLdap}
+              />
             </Stack>
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" justifyContent="space-around">
               <TextField
-                {...register("LDAP_URL", {
-                  disabled: !enableLdap,
-                })}
+                {...register("LDAP_URL")}
+                disabled={!enableLdap}
                 label="LDAP URL:"
                 placeholder="LDAP URL.."
               />
               <TextField
-                {...register("LDAP_BIND_DN", {
-                  disabled: !enableLdap,
-                })}
+                {...register("LDAP_BIND_DN")}
+                disabled={!enableLdap}
                 label="LDAP BIND DN:"
                 placeholder="LDAP BIND DN.."
               />
             </Stack>
             <Stack direction="row" spacing={2} justifyContent="flex-end">
-              <Button
-                type="reset"
-                variant="outlined"
-                disabled={false}
-                onClick={() => reset()}
-              >
+              <Button type="reset" variant="outlined" onClick={() => reset()}>
                 RESET
               </Button>
-              <Button type="submit" variant="contained" disabled={false}>
+              <Button type="submit" variant="contained" disabled={!isDirty}>
                 SAVE CHANGES
               </Button>
             </Stack>
           </Stack>
         </CustomForm>
       </Container>
-      {/*<DevTool control={control} />*/}
+      <DevTool control={control} />
     </>
   );
 }

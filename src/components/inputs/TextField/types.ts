@@ -12,4 +12,6 @@ export type Props = {
   | "placeholder"
   | "id"
   | "name"
+  | "onChange"
+  | "value"
 >;

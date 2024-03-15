@@ -1,12 +1,27 @@
-import React from "react";
+import React, { forwardRef, Ref } from "react";
 import { FormControlLabel } from "@mui/material";
 import { Props } from "./types";
 import * as S from "./styled";
 
-export const Checkbox = ({ label, disabled, id, onChange, size }: Props) => (
+const CheckboxComponent = (
+  { label, id, onChange, size, name, onBlur, value, checked }: Props,
+  ref: Ref<HTMLInputElement>,
+) => (
   <FormControlLabel
+    ref={ref}
     label={label}
-    disabled={disabled}
-    control={<S.Checkbox id={id} onChange={onChange} size={size} />}
+    control={
+      <S.Checkbox
+        id={id}
+        name={name}
+        onChange={onChange}
+        size={size}
+        onBlur={onBlur}
+        value={value}
+        checked={checked}
+      />
+    }
   />
 );
+
+export const Checkbox = forwardRef<HTMLInputElement, Props>(CheckboxComponent);
