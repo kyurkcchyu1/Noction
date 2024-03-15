@@ -6,7 +6,7 @@ export type Inputs = {
   OAUTH_GOOGLE_CLIENT_ID: string;
   OAUTH_GOOGLE_CLIENT_SECRET: string;
   JWT_SECRET: string;
-  JWT_SECRET_TTL: number;
+  JWT_SECRET_TTL: string;
   REFRESH_SECRET: string;
   REFRESH_SECRET_TTL: number;
   HASH_SECRET: string;
@@ -23,7 +23,7 @@ export const schema = z.object({
   OAUTH_GOOGLE_CLIENT_ID: z.string(),
   OAUTH_GOOGLE_CLIENT_SECRET: z.string(),
   JWT_SECRET: z.string(),
-  JWT_SECRET_TTL: z.number(),
+  JWT_SECRET_TTL: z.string(),
   REFRESH_SECRET: z.string(),
   REFRESH_SECRET_TTL: z
     .number()
