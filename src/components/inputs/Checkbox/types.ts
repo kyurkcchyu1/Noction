@@ -5,5 +5,5 @@ export type Props = {
   name?: string;
 } & Pick<
   CheckboxProps,
-  "id" | "onChange" | "size" | "onBlur" | "value" | "checked"
+  "id" | "onChange" | "size" | "onBlur" | "value" | "checked" | "disabled"
 >;
