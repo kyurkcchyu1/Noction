@@ -1,23 +1,25 @@
+"use client";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { data, Inputs, schema, transformData } from "@components";
 import { zodResolver } from "@hookform/resolvers/zod";
-import _ from "lodash";
+import { omitBy, isEqual, mapValues } from "lodash";
 
 type TObject = Record<string, string | boolean | number>;
 
 export function updateValues(initialObject: TObject, updatedObject: TObject) {
-  return _.omitBy(updatedObject, (value, key) =>
-    _.isEqual(value, initialObject[key]),
+  return omitBy(updatedObject, (value, key) =>
+    isEqual(value, initialObject[key]),
+  );
+}
+
+export function convertingValues(data: TObject) {
+  return mapValues(data, (value, key) =>
+    key === "REFRESH_SECRET_TTL" ? `${value}d` : value.toString(),
   );
 }
 
 export const useConfigForm = () => {
   const defaultValues = transformData(data);
-
-  const form = useForm<Inputs>({
-    defaultValues,
-    resolver: zodResolver(schema),
-  });
 
   const {
     register,
@@ -26,11 +28,15 @@ export const useConfigForm = () => {
     reset,
     control,
     formState: { errors, isDirty },
-  } = form;
+  } = useForm<Inputs>({
+    defaultValues,
+    resolver: zodResolver(schema),
+  });
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const updatedValues = updateValues(defaultValues, data);
-    console.log(updatedValues);
+    const body = convertingValues(updatedValues);
+    console.log(body);
   };
 
   return {

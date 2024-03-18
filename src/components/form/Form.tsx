@@ -1,25 +1,20 @@
-"use client";
 import React from "react";
 import { Container, Stack } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Checkbox, TextField, CustomForm, Button } from "@components";
 import { useConfigForm } from "@hooks/useConfigForm";
-import { DevTool } from "@hookform/devtools";
 
-export default function Form() {
+export function Form() {
   const {
     register,
     handleSubmit,
     watch,
     reset,
-    control,
     formState: { errors, isDirty },
   } = useConfigForm();
 
   const enableGoogleOauth = watch("OAUTH_GOOGLE_ENABLED");
   const enableLdap = watch("LDAP_ENABLED");
-
-  console.log(isDirty);
 
   return (
     <>
@@ -128,7 +123,6 @@ export default function Form() {
           </Stack>
         </CustomForm>
       </Container>
-      <DevTool control={control} />
     </>
   );
 }
