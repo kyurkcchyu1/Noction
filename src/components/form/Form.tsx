@@ -1,17 +1,19 @@
+"use client";
 import React from "react";
 import { Container, Stack } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Checkbox, TextField, CustomForm, Button } from "@components";
 import { useConfigForm } from "@hooks/useConfigForm";
+import { TBackendData } from "@data/types";
 
-export function Form() {
+export const Form = (data: TBackendData) => {
   const {
     register,
     handleSubmit,
     watch,
     reset,
     formState: { errors, isDirty },
-  } = useConfigForm();
+  } = useConfigForm(data);
 
   const enableGoogleOauth = watch("OAUTH_GOOGLE_ENABLED");
   const enableLdap = watch("LDAP_ENABLED");
@@ -125,4 +127,4 @@ export function Form() {
       </Container>
     </>
   );
-}
+};
