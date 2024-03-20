@@ -1,24 +1,11 @@
-"use client";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { data, Inputs, schema, transformData } from "@components";
+import { Inputs, schema, transformData } from "@components";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { omitBy, isEqual, mapValues } from "lodash";
+import { updateValues } from "@hooks/updateValues";
+import { convertingValues } from "@hooks/convertingValues";
+import { TBackendData } from "@data/types";
 
-type TObject = Record<string, string | boolean | number>;
-
-export function updateValues(initialObject: TObject, updatedObject: TObject) {
-  return omitBy(updatedObject, (value, key) =>
-    isEqual(value, initialObject[key]),
-  );
-}
-
-export function convertingValues(data: TObject) {
-  return mapValues(data, (value, key) =>
-    key === "REFRESH_SECRET_TTL" ? `${value}d` : value.toString(),
-  );
-}
-
-export const useConfigForm = () => {
+export const useConfigForm = (data: TBackendData) => {
   const defaultValues = transformData(data);
 
   const {
