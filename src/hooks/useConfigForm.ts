@@ -23,6 +23,8 @@ export const useConfigForm = (data: TBackendData) => {
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const updatedValues = updateValues(defaultValues, data);
     const body = convertingValues(updatedValues);
+    const dataForLocal = { ...defaultValues, ...body };
+    localStorage.setItem("data", JSON.stringify(dataForLocal));
     console.log(body);
   };
 
