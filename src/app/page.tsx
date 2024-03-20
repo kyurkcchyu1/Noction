@@ -1,5 +1,6 @@
 "use client";
 import { Form } from "@components";
+
 import { useConfigData } from "@hooks/useConfigData";
 
 export default function App() {
