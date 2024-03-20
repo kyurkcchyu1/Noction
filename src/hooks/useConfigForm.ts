@@ -1,9 +1,10 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Inputs, schema, transformData } from "@components";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { updateValues } from "@hooks/updateValues";
-import { convertingValues } from "@hooks/convertingValues";
-import { TBackendData } from "@data/types";
+import { Inputs, schema } from "../components/index";
+import { updateValues } from "./updateValues";
+import { convertingValues } from "./convertingValues";
+import { TBackendData } from "../data/index";
+import { transformData } from "../data/transformData";
 
 export const useConfigForm = (data: TBackendData) => {
   const defaultValues = transformData(data);
@@ -23,7 +24,7 @@ export const useConfigForm = (data: TBackendData) => {
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const updatedValues = updateValues(defaultValues, data);
     const body = convertingValues(updatedValues);
-    const dataForLocal = { ...defaultValues, ...body };
+    const dataForLocal = convertingValues({ ...data, ...body });
     localStorage.setItem("data", JSON.stringify(dataForLocal));
     console.log(body);
   };

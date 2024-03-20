@@ -2,11 +2,12 @@
 import React from "react";
 import { Container, Stack } from "@mui/material";
 import { Typography } from "@mui/material";
-import { Checkbox, TextField, CustomForm, Button } from "@components";
-import { useConfigForm } from "@hooks/useConfigForm";
-import { TBackendData } from "@data/types";
 
-export const Form = (data: TBackendData) => {
+import { TBackendData } from "../../data/index";
+import { Checkbox, TextField, CustomForm, Button, NumberInput } from "../index";
+import { useConfigForm } from "../../hooks/index";
+
+export const Form = ({ data }: { data: TBackendData }) => {
   const {
     register,
     handleSubmit,
@@ -14,6 +15,8 @@ export const Form = (data: TBackendData) => {
     reset,
     formState: { errors, isDirty },
   } = useConfigForm(data);
+
+  const { JWT_SECRET_TTL, REFRESH_SECRET_TTL, EMAIL_HOST, EMAIL_PORT } = errors;
 
   const enableGoogleOauth = watch("OAUTH_GOOGLE_ENABLED");
   const enableLdap = watch("LDAP_ENABLED");
@@ -35,8 +38,8 @@ export const Form = (data: TBackendData) => {
               <TextField
                 {...register("JWT_SECRET_TTL")}
                 placeholder="JWT Secret TTL.."
-                error={!!errors.JWT_SECRET_TTL}
-                errorMessage={errors.JWT_SECRET_TTL?.message}
+                error={!!JWT_SECRET_TTL}
+                errorMessage={JWT_SECRET_TTL?.message}
                 label="JWT Secret TTL:"
               />
               <TextField
@@ -45,8 +48,8 @@ export const Form = (data: TBackendData) => {
                 })}
                 type="number"
                 placeholder="Refresh Secret TTL.."
-                error={!!errors.REFRESH_SECRET_TTL}
-                errorMessage={errors.REFRESH_SECRET_TTL?.message}
+                error={!!REFRESH_SECRET_TTL}
+                errorMessage={REFRESH_SECRET_TTL?.message}
                 label="Refresh Secret TTL:"
               />
             </Stack>
@@ -54,8 +57,8 @@ export const Form = (data: TBackendData) => {
             <Stack direction="row" justifyContent="space-around">
               <TextField
                 {...register("EMAIL_HOST")}
-                error={!!errors.EMAIL_HOST}
-                errorMessage={errors.EMAIL_HOST?.message}
+                error={!!EMAIL_HOST}
+                errorMessage={EMAIL_HOST?.message}
                 label="Email Host:"
                 placeholder="Email Host.."
               />
@@ -64,8 +67,8 @@ export const Form = (data: TBackendData) => {
                 {...register("EMAIL_PORT", {
                   valueAsNumber: true,
                 })}
-                error={!!errors.EMAIL_PORT}
-                errorMessage={errors.EMAIL_PORT?.message}
+                error={!!EMAIL_PORT}
+                errorMessage={EMAIL_PORT?.message}
                 label="Email Port:"
                 placeholder="Email Port.."
               />

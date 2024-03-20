@@ -1,5 +1,5 @@
 import { mapValues } from "lodash";
-import { TObject } from "@hooks/types";
+import { TObject } from "./types";
 
 export function convertingValues(data: TObject) {
   return mapValues(data, (value, key) =>

@@ -17,7 +17,7 @@ export default function App() {
   return (
     <>
       {/*<SideBar />*/}
-      <Form {...data} />
+      <Form data={data} />
     </>
   );
 }

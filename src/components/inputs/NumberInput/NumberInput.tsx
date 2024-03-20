@@ -32,6 +32,7 @@ export const NumberInput = forwardRef<HTMLInputElement, Props>(
           {label}
         </S.InputLabel>
         <BaseNumberInput
+          componentName={name}
           min={min}
           max={max}
           required={required}
@@ -44,7 +45,6 @@ export const NumberInput = forwardRef<HTMLInputElement, Props>(
           onBlur={onBlur}
           placeholder={placeholder}
           ref={ref}
-          componentName={name}
           slots={{
             root: S.StyledInputRoot,
             input: S.StyledInputElement,
