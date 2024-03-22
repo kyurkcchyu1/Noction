@@ -17,13 +17,13 @@ export const useConfigForm = (data: TBackendData) => {
     control,
     setValue,
     formState: { errors, isDirty },
-  } = useForm({
+  } = useForm<Inputs>({
     mode: "all",
     defaultValues,
     resolver: zodResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => {
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
     const updatedValues = updateValues(defaultValues, data);
     const body = convertingValues(updatedValues);
     const dataForLocal = convertingValues({ ...data, ...body });
