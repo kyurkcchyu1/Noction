@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Header from "@/components/header/Header";
+import Header from "../src/components/header/Header";
 import React from "react";
 import * as S from "./styled";
 
@@ -18,10 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <S.Body className={`${inter.className} normalize`}>
-        <Header />
-        {children}
-      </S.Body>
+      <S.Body className={`${inter.className}`}>{children}</S.Body>
     </html>
   );
 }

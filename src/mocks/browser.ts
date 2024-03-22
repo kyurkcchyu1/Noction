@@ -1,5 +1,5 @@
 "use client";
-import { setupWorker } from "../../node_modules/msw/browser";
-import { handlers } from "./handlers";
+import { setupWorker } from "msw";
+import { mockApiHandlers } from "./mockApiHandlers";
 
-export const worker = setupWorker(...handlers);
+export const worker = setupWorker(...mockApiHandlers);
