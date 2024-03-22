@@ -1,1 +1,1 @@
-export type TObject = Record<string, string | boolean | number>;
+export type TMockData = Record<string, string | boolean | number>;

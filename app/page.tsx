@@ -1,12 +1,8 @@
 "use client";
 import { Form } from "../src/components";
 import { useConfigData } from "../src/hooks/useConfigData";
-import { ThemeProvider } from "@emotion/react";
-import { theme } from "@theme/theme";
-import Header from "../src/components/header/Header";
-import React from "react";
 
-export default function App() {
+export default function ConfigForm() {
   const { data, isLoading } = useConfigData();
 
   if (isLoading) {
@@ -17,10 +13,5 @@ export default function App() {
     return <div>No data..</div>;
   }
 
-  return (
-    <ThemeProvider theme={theme}>
-      <Header />
-      <Form data={data} />
-    </ThemeProvider>
-  );
+  return <Form data={data} />;
 }

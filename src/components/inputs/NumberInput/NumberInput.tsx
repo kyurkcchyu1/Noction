@@ -2,7 +2,8 @@
 import { forwardRef, Ref } from "react";
 import { FormControl } from "@mui/material";
 import { Unstable_NumberInput as BaseNumberInput } from "@mui/base/Unstable_NumberInput";
-import type { Props } from "@/components/inputs/NumberInput/types";
+
+import type { Props } from "./types";
 import * as S from "./styled";
 
 export const NumberInputComponent = (
