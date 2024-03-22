@@ -2,9 +2,10 @@
 import React from "react";
 import { Container, Stack } from "@mui/material";
 import { Typography } from "@mui/material";
+import { DevTool } from "@hookform/devtools";
 
+import { Checkbox, TextField, CustomForm, Button } from "../index";
 import { TBackendData } from "../../data/index";
-import { Checkbox, TextField, CustomForm, Button, NumberInput } from "../index";
 import { useConfigForm } from "../../hooks/index";
 
 export const Form = ({ data }: { data: TBackendData }) => {
@@ -13,9 +14,9 @@ export const Form = ({ data }: { data: TBackendData }) => {
     handleSubmit,
     watch,
     reset,
+    control,
     formState: { errors, isDirty },
   } = useConfigForm(data);
-
   const { JWT_SECRET_TTL, REFRESH_SECRET_TTL, EMAIL_HOST, EMAIL_PORT } = errors;
 
   const enableGoogleOauth = watch("OAUTH_GOOGLE_ENABLED");
@@ -127,6 +128,7 @@ export const Form = ({ data }: { data: TBackendData }) => {
             </Stack>
           </Stack>
         </CustomForm>
+        <DevTool control={control} /> {/* set up the dev tool */}
       </Container>
     </>
   );

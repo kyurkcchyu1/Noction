@@ -4,11 +4,11 @@ import {
   InputLabel as MuiInputLabel,
   FormHelperText,
 } from "@mui/material";
-import { grey } from "@mui/material/colors";
+import { grey, orange } from "@mui/material/colors";
 
 export const InputLabel = styled(MuiInputLabel)`
   &.Mui-focused {
-    color: orange;
+    color: ${orange[500]};
   }
   ,
   &.Mui-error {
