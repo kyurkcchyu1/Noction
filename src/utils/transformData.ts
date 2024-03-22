@@ -1,4 +1,4 @@
-import { TBackendData } from "./types";
+import { TBackendData } from "../data/types";
 
 export const transformData = (data: TBackendData) => {
   return {

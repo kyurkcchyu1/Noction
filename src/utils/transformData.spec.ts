@@ -1,5 +1,5 @@
-import { transformData } from "./index";
-import { data } from "./index";
+import { transformData } from "../data";
+import { data } from "../data";
 
 describe("transforming values", () => {
   test("transformingValues", () => {

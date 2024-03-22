@@ -1,6 +1,7 @@
 import React from "react";
 import { Favorite } from "@mui/icons-material";
 import { CircularProgress } from "@mui/material";
+
 import { Props } from "./types";
 import * as S from "./styled";
 

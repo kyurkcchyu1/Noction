@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { worker } from "../mocks/browser";
+
 import { TBackendData } from "../data/index";
 
 export const useConfigData = () => {
