@@ -4,5 +4,5 @@ export type Props = NumberInputProps & {
   label: string;
   name?: string;
   errorMessage?: string;
-  onChange: (value: number | null) => void;
+  onChange: (value?: number) => void;
 };
