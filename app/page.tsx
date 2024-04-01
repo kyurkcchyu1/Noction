@@ -1,6 +1,6 @@
 "use client";
-import { Form } from "../src/components";
-import { useConfigData } from "../src/hooks/useConfigData";
+import { Form } from "@components";
+import { useConfigData } from "@components";
 
 export default function ConfigForm() {
   const { data, isLoading } = useConfigData();

@@ -1,12 +1,12 @@
 "use client";
-import React from "react";
 import { Container, Stack } from "@mui/material";
 import { Typography } from "@mui/material";
 import { DevTool } from "@hookform/devtools";
 
-import { Checkbox, TextField, CustomForm, Button } from "../index";
-import { TBackendData } from "../../data/index";
-import { useConfigForm } from "../../hooks/index";
+import { Button, Checkbox, TextField } from "@components";
+import { CustomForm } from "./styled";
+import { useConfigForm } from "./hooks";
+import type { TBackendData } from "./data";
 
 export const Form = ({ data }: { data: TBackendData }) => {
   const {

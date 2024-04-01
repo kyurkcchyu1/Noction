@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Stack } from "@mui/material";
 
 import { Form } from "./Form";
-import { useConfigData } from "../../hooks/useConfigData";
+import { useConfigData } from "@components";
 
 const meta: Meta<typeof Form> = {
   title: "Forms/Form",
