@@ -1,4 +1,6 @@
 export { Form } from "./Form";
-export { useConfigForm } from "./hooks";
-export { useConfigData } from "./hooks";
-export type { Inputs } from "./types";
+export * from "./data";
+export * from "./hooks";
+export * from "./utils";
+export type { Inputs } from "./validation";
+export { schema } from "./validation";

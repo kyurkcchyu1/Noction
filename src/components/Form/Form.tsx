@@ -36,7 +36,10 @@ export const Form = ({ data }: { data: TBackendData }) => {
           <Typography>Authentication Security Settings:</Typography>
           <Stack direction="row" justifyContent="space-around">
             <TextField
-              {...register("JWT_SECRET_TTL")}
+              {...register("JWT_SECRET_TTL", {
+                valueAsNumber: true,
+              })}
+              type="number"
               placeholder="JWT Secret TTL.."
               error={!!JWT_SECRET_TTL}
               errorMessage={JWT_SECRET_TTL?.message}

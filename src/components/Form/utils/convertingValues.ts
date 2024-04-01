@@ -1,5 +1,5 @@
 import { mapValues } from "lodash";
-import { TMockData } from "@components/Form/hooks/types";
+import type { TMockData } from "@components";
 
 export function convertingValues(data: TMockData) {
   return mapValues(data, (value, key) =>
