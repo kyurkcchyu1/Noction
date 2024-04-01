@@ -1,8 +1,8 @@
-import { transformData } from "../data";
+import { transformData } from "./transformData";
 import { data } from "../data";
 
 describe("transforming values", () => {
-  test("transformingValues", () => {
+  it("should", () => {
     const result = {
       ...data,
       EMAIL_PORT: 1025,
