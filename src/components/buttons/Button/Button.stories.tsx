@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Stack } from "@mui/material";
 import { action } from "@storybook/addon-actions";
 import { Button } from "./Button";
+import { Android, Balance } from "@mui/icons-material";
 
 const meta: Meta<typeof Button> = {
   title: "Buttons/Button",
@@ -24,10 +25,10 @@ export const Default: Story = {
           Text
         </Button>
         <Button {...args} variant="outlined">
-          Contained
+          Outlined
         </Button>
         <Button {...args} variant="contained">
-          Outlined
+          Contained
         </Button>
       </Stack>
     );
@@ -46,10 +47,10 @@ export const Disabled: Story = {
           Text
         </Button>
         <Button {...args} variant="outlined">
-          Contained
+          Outlined
         </Button>
         <Button {...args} variant="contained">
-          Outlined
+          Contained
         </Button>
       </Stack>
     );
@@ -68,10 +69,10 @@ export const Loading: Story = {
           Text
         </Button>
         <Button {...args} variant="outlined">
-          Contained
+          Outlined
         </Button>
         <Button {...args} variant="contained">
-          Outlined
+          Contained
         </Button>
       </Stack>
     );
@@ -86,14 +87,14 @@ export const WithIcon: Story = {
   render: (args) => {
     return (
       <Stack spacing={2} direction="row">
-        <Button {...args} variant="text">
+        <Button {...args} variant="text" iconImage={<Android />}>
           Text
         </Button>
-        <Button {...args} variant="outlined">
-          Contained
+        <Button {...args} variant="outlined" iconImage={<Balance />}>
+          Outlined
         </Button>
         <Button {...args} variant="contained">
-          Outlined
+          Contained
         </Button>
       </Stack>
     );

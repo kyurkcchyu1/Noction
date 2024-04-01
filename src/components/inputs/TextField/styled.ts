@@ -8,7 +8,7 @@ import { grey, orange } from "@mui/material/colors";
 
 export const InputLabel = styled(MuiInputLabel)`
   &.Mui-focused {
-    color: ${orange[500]};
+    color: ${orange[600]};
   }
   ,
   &.Mui-error {
@@ -27,7 +27,7 @@ export const InputBase = styled(MuiInputBase)(() => ({
   "& .MuiInputBase-input": {
     borderRadius: 30,
     position: "relative",
-    border: "1px solid",
+    // border: "1px solid orange",
     fontSize: 16,
     width: "90%",
     padding: "10px 12px",
