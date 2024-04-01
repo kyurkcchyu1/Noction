@@ -1,4 +1,3 @@
-import React from "react";
 import { Favorite } from "@mui/icons-material";
 import { CircularProgress } from "@mui/material";
 
@@ -16,6 +15,7 @@ export const Button = ({
   isLoading = false,
   hasIcon = false,
   iconSize = 20,
+  iconImage = <Favorite />,
 }: Props) => {
   return (
     <S.Button
@@ -29,7 +29,7 @@ export const Button = ({
         isLoading ? (
           <CircularProgress size={iconSize} color="inherit" />
         ) : hasIcon ? (
-          <Favorite />
+          iconImage
         ) : null
       }
     >

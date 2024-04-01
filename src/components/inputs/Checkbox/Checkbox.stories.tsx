@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Stack } from "@mui/material";
 import { action } from "@storybook/addon-actions";
+
 import { Checkbox } from "./Checkbox";
 
 const meta: Meta<typeof Checkbox> = {
@@ -14,7 +15,7 @@ type Story = StoryObj<typeof Checkbox>;
 
 export const Default: Story = {
   args: {
-    label: "Checkbox label",
+    label: "",
     onChange: action("onChange"),
   },
   render: (args) => {
@@ -33,6 +34,7 @@ export const Disabled: Story = {
     label: "Checkbox label",
     disabled: true,
   },
+
   render: (args) => {
     return (
       <Stack spacing={2} direction="row">
