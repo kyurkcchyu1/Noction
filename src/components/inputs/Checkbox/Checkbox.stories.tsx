@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { Stack } from "@mui/material";
 import { action } from "@storybook/addon-actions";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import { Checkbox } from "./Checkbox";
 

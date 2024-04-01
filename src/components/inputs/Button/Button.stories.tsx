@@ -1,8 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { Stack } from "@mui/material";
 import { action } from "@storybook/addon-actions";
-import { Button } from "./Button";
 import { Android, Balance } from "@mui/icons-material";
+
+import type { Meta, StoryObj } from "@storybook/react";
+import { Button } from "./Button";
 
 const meta: Meta<typeof Button> = {
   title: "Buttons/Button",

@@ -1,5 +1,5 @@
 import { isEqual, omitBy } from "lodash";
-import { TMockData } from "@components/Form/hooks/types";
+import { TMockData } from "@components";
 
 export function updateValues(
   initialObject: TMockData,

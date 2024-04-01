@@ -1,4 +1,3 @@
-"use client";
 import { forwardRef, Ref } from "react";
 import { FormControl } from "@mui/material";
 import { Unstable_NumberInput as BaseNumberInput } from "@mui/base/Unstable_NumberInput";
@@ -21,7 +20,6 @@ export const NumberInputComponent = (
     required,
     onChange,
     onBlur,
-    onInputChange,
     errorMessage,
   }: Props,
   ref: Ref<HTMLInputElement>,

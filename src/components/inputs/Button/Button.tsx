@@ -1,7 +1,7 @@
 import { Favorite } from "@mui/icons-material";
 import { CircularProgress } from "@mui/material";
 
-import { Props } from "./types";
+import type { Props } from "./types";
 import * as S from "./styled";
 
 export const Button = ({
