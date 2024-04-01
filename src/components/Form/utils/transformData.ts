@@ -1,4 +1,4 @@
-import { TBackendData } from "../data/types";
+import { TBackendData } from "@components/Form/data/types";
 
 export const transformData = (data: TBackendData) => {
   return {

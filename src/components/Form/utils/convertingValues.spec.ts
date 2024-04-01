@@ -1,5 +1,5 @@
 import { data } from "../data";
-import { convertingValues } from "../utils/convertingValues";
+import { convertingValues } from "./convertingValues";
 
 describe("converting values to backend format", () => {
   test("convertingValues", () => {

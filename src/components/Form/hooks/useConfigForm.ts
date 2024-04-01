@@ -1,12 +1,10 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Inputs } from "../components/index";
-import { schema } from "../components/form/validation";
-import { updateValues } from "../utils/updateValues";
-import { convertingValues } from "../utils/convertingValues";
-import { transformData } from "../utils/transformData";
-import { TBackendData } from "../data/index";
+import { schema } from "../validation";
+import { transformData, convertingValues, updateValues } from "../utils";
+import type { Inputs } from "@components";
+import type { TBackendData } from "../data";
 
 export const useConfigForm = (data: TBackendData) => {
   const defaultValues = transformData(data);

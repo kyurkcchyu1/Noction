@@ -1,12 +1,13 @@
 "use client";
-import React from "react";
+import { ReactNode } from "react";
 import { Global, ThemeProvider } from "@emotion/react";
 
-import Header from "@components/header/Header";
-import { theme } from "../src/theme/theme";
+import { Header } from "@components";
+
+import { theme } from "@theme";
 import { GlobalStyles } from "./GlobalStyles";
 
-export const App = ({ children }: { children: React.ReactNode }) => {
+export const App = ({ children }: { children: ReactNode }) => {
   return (
     <ThemeProvider theme={theme}>
       <Global styles={GlobalStyles} />

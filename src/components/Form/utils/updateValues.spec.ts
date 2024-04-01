@@ -1,5 +1,5 @@
 import { data } from "../data";
-import { updateValues } from "../utils/updateValues";
+import { updateValues } from "./updateValues";
 
 describe("updating values", () => {
   test("updateValues", () => {

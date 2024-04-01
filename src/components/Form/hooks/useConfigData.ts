@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { worker } from "../mocks/browser";
+import { worker } from "@mocks/browser";
 
-import { TBackendData } from "../data/index";
+import { TBackendData } from "../data";
 
 export const useConfigData = () => {
   const [data, setData] = useState<TBackendData | undefined>();
