@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { worker } from "@mocks/browser";
-
-import type { TBackendData } from "../data";
+import { GetConfigProps } from "../types";
 
 export const useConfigData = () => {
-  const [data, setData] = useState<TBackendData | undefined>();
+  const [data, setData] = useState<GetConfigProps | undefined>();
   const [isLoading, setIsLoading] = useState(false);
 
   const getConfig = async () => {

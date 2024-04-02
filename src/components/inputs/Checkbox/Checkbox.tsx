@@ -1,8 +1,8 @@
 import { forwardRef, Ref } from "react";
-import { FormControlLabel } from "@mui/material";
 
 import type { Props } from "./types";
 import * as S from "./styled";
+import { FormControlLabel } from "@mui/material";
 
 const CheckboxComponent = (
   { label, id, onChange, size, name, onBlur, value, checked, disabled }: Props,
