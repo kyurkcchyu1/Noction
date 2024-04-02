@@ -1,8 +1,8 @@
 "use client";
-import { Form } from "@components";
-import { useConfigData } from "@components";
+import { ConfigForm } from "@components";
+import { useConfigData } from "@components/ConfigForm/hooks";
 
-export default function ConfigForm() {
+export default function ConfigurationForm() {
   const { data, isLoading } = useConfigData();
 
   if (isLoading) {
@@ -13,5 +13,5 @@ export default function ConfigForm() {
     return <div>No data..</div>;
   }
 
-  return <Form data={data} />;
+  return <ConfigForm data={data} />;
 }

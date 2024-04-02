@@ -19,7 +19,7 @@ const TextFieldComponent = (
   }: Props,
   ref: Ref<HTMLInputElement>,
 ) => (
-  <FormControl variant="standard" disabled={disabled} sx={{ width: 1 / 2 }}>
+  <FormControl variant="standard" disabled={disabled}>
     <S.InputLabel shrink error={error}>
       {label}
     </S.InputLabel>
