@@ -1,5 +1,5 @@
-import { transformData } from "./transformData";
 import { data } from "../data";
+import { transformData } from "./transformData";
 
 describe("transforming values", () => {
   it("should", () => {
