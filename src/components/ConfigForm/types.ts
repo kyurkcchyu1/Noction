@@ -1,4 +1,7 @@
-export type TBackendData = {
+import { z } from "zod";
+import { configSchema } from "./validation";
+
+export type GetConfigProps = {
   APP_URL: string;
   OAUTH_GOOGLE_ENABLED: string;
   OAUTH_GOOGLE_CLIENT_ID: string;
@@ -14,3 +17,5 @@ export type TBackendData = {
   EMAIL_HOST: string;
   EMAIL_PORT: string;
 };
+
+export type ConfigSerializerProps = z.infer<typeof configSchema>;

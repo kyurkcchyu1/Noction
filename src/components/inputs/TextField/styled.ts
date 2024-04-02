@@ -27,9 +27,8 @@ export const InputBase = styled(MuiInputBase)(() => ({
   "& .MuiInputBase-input": {
     borderRadius: 30,
     position: "relative",
-    // border: "1px solid orange",
+    // width: "100%",
     fontSize: 16,
-    width: "90%",
     padding: "10px 12px",
     backgroundColor: grey[800],
     color: grey[100],

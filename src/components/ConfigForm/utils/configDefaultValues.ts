@@ -1,6 +1,6 @@
-import { TBackendData } from "@components";
+import { GetConfigProps } from "../types";
 
-export const transformData = (data: TBackendData) => {
+export const configDefaultValues = (data: GetConfigProps) => {
   return {
     ...data,
     EMAIL_PORT: +data?.EMAIL_PORT,
