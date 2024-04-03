@@ -1,19 +1,4 @@
 import { z } from "zod";
-import { TBackendData } from "@components";
-
-export type Inputs = {
-  JWT_SECRET_TTL: number;
-  REFRESH_SECRET_TTL: number;
-  EMAIL_PORT: number;
-  OAUTH_GOOGLE_ENABLED: boolean;
-  LDAP_ENABLED: boolean;
-} & Pick<
-  TBackendData,
-  | "OAUTH_GOOGLE_CLIENT_SECRET"
-  | "OAUTH_GOOGLE_CLIENT_ID"
-  | "LDAP_URL"
-  | "LDAP_BIND_DN"
->;
 
 export const configSchema = z.object({
   APP_URL: z.string().url(),
