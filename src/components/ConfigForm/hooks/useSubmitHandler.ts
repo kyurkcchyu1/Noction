@@ -23,9 +23,13 @@ export const useSubmitHandler = (data: GetConfigProps) => {
 
     const body = convertingValues(updatedValues);
 
+    // console.log(body);
+
     const dataForLocal = convertingValues({ ...payload, ...body });
 
     localStorage.setItem("data", JSON.stringify(dataForLocal));
+
+    return body;
   };
 
   return { onSubmitHandler };

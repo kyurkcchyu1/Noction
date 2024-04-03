@@ -1,3 +1,3 @@
 export * from "./inputs";
-export * from "./ConfigForm";
+export { ConfigForm } from "./ConfigForm";
 export { Header } from "./Header";
