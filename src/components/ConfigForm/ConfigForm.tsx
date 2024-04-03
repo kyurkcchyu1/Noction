@@ -23,6 +23,10 @@ export const ConfigForm = ({ data }: { data: GetConfigProps }) => {
     EMAIL_HOST,
     EMAIL_PORT,
     APP_URL,
+    OAUTH_GOOGLE_CLIENT_ID,
+    OAUTH_GOOGLE_CLIENT_SECRET,
+    LDAP_URL,
+    LDAP_BIND_DN,
   } = errors;
 
   const enableGoogleOauth = watch("OAUTH_GOOGLE_ENABLED");
@@ -96,12 +100,16 @@ export const ConfigForm = ({ data }: { data: GetConfigProps }) => {
           label="OAUTH Google Client ID:"
           placeholder="AUTH Google Client ID.."
           disabled={!enableGoogleOauth}
+          error={!!OAUTH_GOOGLE_CLIENT_ID}
+          errorMessage={OAUTH_GOOGLE_CLIENT_ID?.message}
         />
         <TextField
           {...register("OAUTH_GOOGLE_CLIENT_SECRET")}
           label="OAUTH Google Client Secret:"
           placeholder="OAUTH Google Client Secret.."
           disabled={!enableGoogleOauth}
+          error={!!OAUTH_GOOGLE_CLIENT_SECRET}
+          errorMessage={OAUTH_GOOGLE_CLIENT_SECRET?.message}
         />
         <Typography>LDAP Settings:</Typography>
         <S.Row>
@@ -116,12 +124,16 @@ export const ConfigForm = ({ data }: { data: GetConfigProps }) => {
           label="LDAP URL:"
           placeholder="LDAP URL.."
           disabled={!enableLdap}
+          error={!!LDAP_URL}
+          errorMessage={LDAP_URL?.message}
         />
         <TextField
           {...register("LDAP_BIND_DN")}
           label="LDAP BIND DN:"
           placeholder="LDAP BIND DN.."
           disabled={!enableLdap}
+          error={!!LDAP_BIND_DN}
+          errorMessage={LDAP_BIND_DN?.message}
         />
         <S.Row
           direction="row"
@@ -129,17 +141,13 @@ export const ConfigForm = ({ data }: { data: GetConfigProps }) => {
           justifyContent="end"
           alignItems="center"
         >
-          <Button type="reset" variant="outlined" onClick={() => reset()}>
+          <Button variant="outlined" onClick={() => reset()}>
             RESET
           </Button>
           <Button
             type="submit"
             variant="contained"
-            disabled={
-              !isDirty ||
-              // !isValid ||
-              isSubmitting
-            }
+            disabled={!isDirty || !isValid || isSubmitting}
           >
             SAVE CHANGES
           </Button>
