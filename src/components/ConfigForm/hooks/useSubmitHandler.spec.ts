@@ -6,6 +6,7 @@ import { data } from "../staticData";
 describe("useSubmitHandler", () => {
   it("should return update values", () => {
     const { result } = renderHook(() => useSubmitHandler(data));
+
     const { onSubmitHandler } = result.current;
 
     const payload = {
